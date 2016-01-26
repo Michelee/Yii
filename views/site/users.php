@@ -6,7 +6,7 @@
 ?>
 <?php
 if (Yii::$app->session->hasFlash('success')) {
-    echo Yii::$app->session->getFlash('success');
+    echo "<div class='alert alert-success'>".Yii::$app->session->getFlash('success')."</div>";
 }
 ?>
 
