@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\UsersForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -96,5 +97,17 @@ class SiteController extends Controller
     {
         $test = 'Michele';
         return $this->render('hello',array('name' => $test));
+    }
+
+    public function actionUsers()
+    {
+        $model = new UsersForm;
+
+        if($model->load(Yii::$app->request->post()) && $model->validate())
+        {
+            Yii::$app->session->setFlash('success','You have entered the data correctly');
+        }
+            return $this->render('users',['model' => $model]);
+
     }
 }
